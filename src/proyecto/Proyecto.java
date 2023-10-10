@@ -17,6 +17,8 @@ public class Proyecto {
         System.out.println("Proyecto de Metodo Simplex");
         System.out.println("");
         System.out.println("Soy yo");
+        
+        System.out.println("");
     }
     
 }
