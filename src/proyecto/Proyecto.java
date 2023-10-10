@@ -14,7 +14,8 @@ public class Proyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("CARA DE VERGA");
+        System.out.println("Proyecto de Metodo Simplex");
+        System.out.println("");
     }
     
 }
