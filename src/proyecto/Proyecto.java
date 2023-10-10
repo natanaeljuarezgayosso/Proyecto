@@ -116,5 +116,57 @@ public class Proyecto {
         }
         return filaPivot;
     }
+    
+    private void realizarPasoSimplex(double[][] matriz, int filaPivot, int columnaPivot) {
+        int numFilas = matriz.length;
+        int numColumnas = matriz[0].length;
+
+        
+        double pivot = matriz[filaPivot][columnaPivot];
+        for (int j = 0; j < numColumnas; j++) {
+            matriz[filaPivot][j] /= pivot;
+        }
+
+     
+        for (int i = 0; i < numFilas; i++) {
+            if (i != filaPivot) {
+                double factor = matriz[i][columnaPivot];
+                for (int j = 0; j < numColumnas; j++) {
+                    matriz[i][j] -= factor * matriz[filaPivot][j];
+                }
+            }
+        }
     }
+    public void imprimirMatriz(double[][] matriz) {
+        int numFilas = matriz.length;
+        int numColumnas = matriz[0].length;
+
+        for (int i = 0; i < numFilas; i++) {
+            for (int j = 0; j < numColumnas; j++) {
+                System.out.printf("%.2f\t", matriz[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    public void mostrarResultado(double[][] matriz, int numVariables, int numRestricciones) {
+        int numColumnas = matriz[0].length;
+
+        System.out.println("Valor de Z (Función Objetivo): " + matriz[0][numColumnas - 1]);
+
+        for (int i = 1; i <= numRestricciones; i++) {
+            int indiceVariableBasica = -1;
+            for (int j = 0; j < numVariables; j++) {
+                if (matriz[i][j] == 1) {
+                    indiceVariableBasica = j;
+                    break;
+                }
+            }
+
+            if (indiceVariableBasica != -1) {
+                System.out.println("Variable básica x" + (indiceVariableBasica + 1) + ": " + matriz[i][numColumnas - 1]);
+            }
+        }
+    }
+}
+    
 
