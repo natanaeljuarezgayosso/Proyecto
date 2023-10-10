@@ -15,6 +15,7 @@ public class Proyecto {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -56,7 +57,7 @@ public class Proyecto {
         }
 
        
-        SimplexSolver solver = new SimplexSolver();
+        Proyecto solver = new Proyecto();
         boolean solucionEncontrada = solver.solve(matriz, numVariables, numRestricciones);
 
         if (solucionEncontrada) {
