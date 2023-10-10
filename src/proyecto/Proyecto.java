@@ -87,6 +87,34 @@ public class Proyecto {
             realizarPasoSimplex(matriz, filaPivot, columnaPivot);
         }
     }
+    private int encontrarColumnaPivot(double[][] matriz) {
+        int numColumnas = matriz[0].length;
+        int columnaPivot = -1;
+        for (int j = 0; j < numColumnas - 1; j++) {
+            if (matriz[0][j] > 0) {
+                columnaPivot = j;
+                break;
+            }
+        }
+        return columnaPivot;
     }
-    
-}
+    private int encontrarFilaPivot(double[][] matriz, int columnaPivot) {
+        int numFilas = matriz.length;
+        int numColumnas = matriz[0].length;
+
+        int filaPivot = -1;
+        double minRatio = Double.MAX_VALUE;
+
+        for (int i = 1; i < numFilas; i++) {
+            if (matriz[i][columnaPivot] > 0) {
+                double ratio = matriz[i][numColumnas - 1] / matriz[i][columnaPivot];
+                if (ratio < minRatio) {
+                    minRatio = ratio;
+                    filaPivot = i;
+                }
+            }
+        }
+        return filaPivot;
+    }
+    }
+
